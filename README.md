@@ -1,5 +1,9 @@
 # vehicle-plate-keyboard
 
+[![npm version](https://badge.fury.io/js/vehicle-plate-keyboard.svg)](//npmjs.com/package/vehicle-plate-keyboard)
+
+[![Build Status](https://travis-ci.com/LiuuY/vehicle-plate-keyboard.svg?branch=master)](https://travis-ci.com/LiuuY/vehicle-plate-keyboard)
+
 A Chinese vehicle plate number keyboard for React (not a really keyboard, just a modal)
 
 ## 🚗 Demo
