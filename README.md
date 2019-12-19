@@ -4,11 +4,23 @@
 
 A Chinese vehicle plate number keyboard for React (not a really keyboard, just a modal)
 
+React 实现的车牌键盘。
+
+支持省份+字母+字母/数字+'港澳学警领'；新能源车牌
+
 ## 🚗 Demo
 
 [Demo](https://codesandbox.io/s/vehicle-plate-keyboard-demo-xxdlv)
 
 ![Demo](https://raw.githubusercontent.com/LiuuY/vehicle-plate-keyboard/master/demo.gif)
+
+## 📷 Screenshots
+
+![1](https://raw.githubusercontent.com/LiuuY/vehicle-plate-keyboard/master/screenshots/keyboard1.png)
+
+![2](https://raw.githubusercontent.com/LiuuY/vehicle-plate-keyboard/master/screenshots/keyboard2.png)
+
+![3](https://raw.githubusercontent.com/LiuuY/vehicle-plate-keyboard/master/screenshots/keyboard3.png)
 
 ## 📦 Installation
 
