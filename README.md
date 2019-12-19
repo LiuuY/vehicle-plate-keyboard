@@ -6,7 +6,11 @@ A Chinese vehicle plate number keyboard for React (not a really keyboard, just a
 
 React 实现的车牌键盘。
 
-支持省份+字母+字母/数字+'港澳学警领'；新能源车牌
+## 💡 Features
+
+- 省份 + 字母/数字 + '港澳学警领'
+- 新能源车牌
+- 自动判断当前位置可输入字符类型
 
 ## 🚗 Demo
 
@@ -44,7 +48,7 @@ import 'vehicle-plate-keyboard/dist/main.css';
 />
 ```
 
-## 🗺 Api
+## 🗺 API
 
 | props              | type                    | description                   |
 | ------------------ | ----------------------- | ----------------------------- |
