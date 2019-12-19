@@ -1,0 +1,59 @@
+{
+  "name": "vehicle-plate-keyboard",
+  "license": "MIT",
+  "version": "0.5.0",
+  "description": "Chinese vehicle plate number keyboard",
+  "author": "LiuuY <mail4c59@gmail.com>",
+  "private": false,
+  "main": "dist/keyboard.js",
+  "scripts": {
+    "start": "webpack",
+    "build:watch": "webpack --watch --info-verbosity verbose",
+    "build:prod": "rimraf dist && NODE_ENV=production webpack",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "lint:fix": "tslint -p tsconfig.json -c tslint.json --fix",
+    "prestart": "rimraf dist && tsc",
+    "precommit": "lint-staged"
+  },
+  "peerDependencies": {
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^4.1.0",
+    "@types/react": "^16.7.18",
+    "@types/react-dom": "^16.0.11",
+    "awesome-typescript-loader": "^5.2.1",
+    "css-loader": "^2.1.0",
+    "cssnano": "^4.1.8",
+    "husky": "^1.2.1",
+    "lint-staged": "^8.1.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.5.0",
+    "postcss-px-to-viewport": "^0.0.3",
+    "postcss-scss": "^2.0.0",
+    "prettier": "^1.14.2",
+    "react-dev-utils": "^10.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.3",
+    "tslint": "5.11.0",
+    "typescript": "3.2.2",
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "yarn lint:fix",
+      "git add"
+    ]
+  }
+}
