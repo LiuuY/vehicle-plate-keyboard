@@ -2,6 +2,10 @@
 
 A Chinese vehicle plate number keyboard for React (not a really keyboard, just a modal)
 
+## 🚗 Demo
+
+[Demo](https://codesandbox.io/s/vehicle-plate-keyboard-demo-xxdlv)
+
 ## 📦 Installation
 
 ```Javascript
