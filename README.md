@@ -6,6 +6,8 @@ A Chinese vehicle plate number keyboard for React (not a really keyboard, just a
 
 [Demo](https://codesandbox.io/s/vehicle-plate-keyboard-demo-xxdlv)
 
+![Demo](https://raw.githubusercontent.com/LiuuY/vehicle-plate-keyboard/master/demo.gif)
+
 ## 📦 Installation
 
 ```Javascript
