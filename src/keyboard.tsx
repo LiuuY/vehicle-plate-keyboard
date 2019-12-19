@@ -66,7 +66,7 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
 
   const resetTime = () => {
     startTime = performance.now();
-    totalTime = 400;
+    totalTime = 300;
   };
 
   const createKeyboardDOM = () => {
