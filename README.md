@@ -61,7 +61,7 @@ import 'vehicle-plate-keyboard/dist/main.css';
 | cellTextStyle      | React.CSSProperties     | keycell style                 |
 | safeArea           | boolean                 | show safearea                 |
 
-## Development
+## 🚧 Development
 
 vehicle-plate-keyboard use [Storybook](https://storybook.js.org/) for developing in isolation.
 
