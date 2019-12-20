@@ -10,6 +10,7 @@
     "start": "webpack",
     "build:watch": "webpack --watch --info-verbosity verbose",
     "build:prod": "rimraf dist && NODE_ENV=production webpack",
+    "postversion": "git push && git push --tags && npm publish",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "lint:fix": "tslint -p tsconfig.json -c tslint.json --fix",
