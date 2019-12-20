@@ -1,6 +1,6 @@
 # vehicle-plate-keyboard
 
-[![npm version](https://badge.fury.io/js/vehicle-plate-keyboard.svg)](//npmjs.com/package/vehicle-plate-keyboard) [![Build Status](https://travis-ci.com/LiuuY/vehicle-plate-keyboard.svg?branch=master)](https://travis-ci.com/LiuuY/vehicle-plate-keyboard) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://badge.fury.io/js/vehicle-plate-keyboard.svg)](//npmjs.com/package/vehicle-plate-keyboard) [![Build Status](https://travis-ci.com/LiuuY/vehicle-plate-keyboard.svg?branch=master)](https://travis-ci.com/LiuuY/vehicle-plate-keyboard) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://github.com/LiuuY/vehicle-plate-keyboard)
 
 A Chinese vehicle plate number keyboard for React (not a really keyboard, just a modal)
 
@@ -60,6 +60,18 @@ import 'vehicle-plate-keyboard/dist/main.css';
 | confirmButtonText  | string                  | confirm button text           |
 | cellTextStyle      | React.CSSProperties     | keycell style                 |
 | safeArea           | boolean                 | show safearea                 |
+
+## Development
+
+vehicle-plate-keyboard use [Storybook](https://storybook.js.org/) for developing in isolation.
+
+```javascript
+yarn storybook
+```
+
+open browser, http://localhost:6006/, 😆
+
+![1](https://raw.githubusercontent.com/LiuuY/vehicle-plate-keyboard/master/screenshots/storybook.png)
 
 ## 📝 License
 

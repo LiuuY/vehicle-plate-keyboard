@@ -13,3 +13,4 @@ webpack.config.js
 example
 demo.gif
 screenshots/
+.storybook/
