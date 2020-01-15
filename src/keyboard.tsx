@@ -4,6 +4,16 @@ import KeyboardCell from './keyboardCell';
 import * as style from './style.module.scss';
 import { KeyboardProps } from './types';
 
+enum SecondPageStatus {
+  DisableAll = 0,
+  AllowAll,
+  AlphabetOnly,
+  NumberOnly,
+  AllowSpecialCharaters,
+}
+
+type secondPageType = SecondPageStatus | string;
+
 const firstPage = [
   ['京', '沪', '粤', '津', '冀', '晋', '蒙', '辽'],
   ['吉', '黑', '苏', '浙', '皖', '闽', '赣', '鲁'],
@@ -19,12 +29,53 @@ const secondPage = [
   ['港', '澳', '学', '警', '领'],
 ];
 
+const smallVehicleNewEnergy = '0123456789';
+const bigVehicleNewEnergy = 'DF';
+
 const requestAnimationFrame =
   window.requestAnimationFrame || window.webkitRequestAnimationFrame;
 
 const document = window.document;
 
 const easeOut = (progress: number) => Math.pow(--progress, 5) + 1;
+
+/*
+新能源车牌号规则：
+1. 当第三位为D/F，第四位为字母数字，第五至八位为数字（小型车）
+2. 当第八位为D/F, 第三到七位为数字（大型车）
+*/
+const isNewEnergyPlate = (plate: string): false | string => {
+  if (isNewEnergyBigVehicle(plate)) {
+    return bigVehicleNewEnergy;
+  } else if (isNewEnergySmallVehicle(plate)) {
+    return smallVehicleNewEnergy;
+  }
+  return false;
+};
+
+const isNewEnergySmallVehicle = (plate: string) =>
+  /[D|F]/.test(plate[2]) && /^[0-9]+$/.test(plate.slice(4, 7));
+
+const isNewEnergyBigVehicle = (plate: string) =>
+  /^[0-9]+$/.test(plate.slice(2, 7));
+
+const isAlphabet = (s: string) => /[ABCDEFGHJKLMNPQRSTUVWXYZ]/.test(s);
+const isNumber = (s: string) => /[0-9]/.test(s);
+const isSpecialCharacters = (s: string) => /[港澳学警领]/.test(s);
+
+const onlyAllowInput = (s: string, onlyAllows: secondPageType): boolean => {
+  if (typeof onlyAllows === 'string') {
+    return onlyAllows.indexOf(s) !== -1;
+  } else if (onlyAllows === SecondPageStatus.AllowAll) {
+    return isAlphabet(s) || isNumber(s);
+  } else if (onlyAllows === SecondPageStatus.AlphabetOnly) {
+    return isAlphabet(s);
+  } else if (onlyAllows === SecondPageStatus.NumberOnly) {
+    return isNumber(s);
+  } else if (onlyAllows === SecondPageStatus.AllowSpecialCharaters) {
+    return isAlphabet(s) || isNumber(s) || isSpecialCharacters(s);
+  }
+};
 
 const LicenseKeyboard = React.memo((props: KeyboardProps) => {
   const [state, setState] = React.useState({
@@ -149,7 +200,7 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
                     cell={province}
                     key={province}
                     onClick={handleEnter}
-                    type="province"
+                    type='province'
                   />
                 );
               })}
@@ -161,9 +212,7 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
   };
 
   const renderNumberSelect = (
-    alphabetOnly: boolean = false,
-    allowCharacter: boolean = false,
-    disabledAll: boolean = false,
+    type: secondPageType = SecondPageStatus.AllowAll,
   ) => {
     return (
       <article className={style.keyboardContainer}>
@@ -175,8 +224,8 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
                 cell={cell}
                 key={cell}
                 onClick={handleEnter}
-                disabled={disabledAll || alphabetOnly}
-                type="normal"
+                disabled={!onlyAllowInput(cell, type)}
+                type='normal'
               />
             );
           })}
@@ -189,8 +238,8 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
                 cell={cell}
                 key={cell}
                 onClick={handleEnter}
-                disabled={disabledAll || /[I|O]/.test(cell)}
-                type="normal"
+                disabled={!onlyAllowInput(cell, type)}
+                type='normal'
               />
             );
           })}
@@ -203,8 +252,8 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
                 cell={cell}
                 key={cell}
                 onClick={handleEnter}
-                disabled={disabledAll}
-                type="normal"
+                disabled={!onlyAllowInput(cell, type)}
+                type='normal'
               />
             );
           })}
@@ -217,8 +266,8 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
                 cell={cell}
                 key={cell}
                 onClick={handleEnter}
-                disabled={disabledAll}
-                type="normal"
+                disabled={!onlyAllowInput(cell, type)}
+                type='normal'
               />
             );
           })}
@@ -232,8 +281,8 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
                   cell={cell}
                   key={cell}
                   onClick={handleEnter}
-                  disabled={disabledAll || alphabetOnly || !allowCharacter}
-                  type="character"
+                  disabled={!onlyAllowInput(cell, type)}
+                  type='character'
                 />
               );
             })
@@ -260,7 +309,7 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
       case 0:
         return renderProvinceSelect();
       case 1:
-        return renderNumberSelect(true);
+        return renderNumberSelect(SecondPageStatus.AlphabetOnly);
       case 2:
         return renderNumberSelect();
       case 3:
@@ -270,12 +319,18 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
       case 5:
         return renderNumberSelect();
       case 6:
-        return renderNumberSelect(false, true);
+        return renderNumberSelect(SecondPageStatus.AllowSpecialCharaters);
       case 7:
-        const shouldEndEnter = /[港澳学警领]/.test(props.value!.slice(-1));
-        return renderNumberSelect(false, false, shouldEndEnter);
+        const newEnergyVehicleLastNumber = isNewEnergyPlate(props.value!);
+        if (
+          isSpecialCharacters(props.value!.slice(-1)) ||
+          newEnergyVehicleLastNumber === false
+        ) {
+          return renderNumberSelect(SecondPageStatus.DisableAll);
+        }
+        return renderNumberSelect(newEnergyVehicleLastNumber);
       default:
-        return renderNumberSelect(false, false, true);
+        return renderNumberSelect(SecondPageStatus.DisableAll);
     }
   };
 
