@@ -8,13 +8,12 @@ React 实现的车牌键盘。
 
 ## 💡 Features
 
-- 省份 + 字母/数字 + '港澳学警领'
-- 新能源车牌
-- 自动判断当前位置可输入字符类型
+- 省份 + 字母（无 I/O）/ 数字 + 「港澳学警领」
+- [新能源车牌规则](https://github.com/LiuuY/vehicle-plate-keyboard/blob/master/CHANGELOG.md#070)
 
 ## 🚗 Demo
 
-[Demo](https://codesandbox.io/s/vehicle-plate-keyboard-demo-xxdlv)
+### [在线例子](https://codesandbox.io/s/vehicle-plate-keyboard-demo-xxdlv)
 
 ![Demo](https://raw.githubusercontent.com/LiuuY/vehicle-plate-keyboard/master/demo.gif)
 
