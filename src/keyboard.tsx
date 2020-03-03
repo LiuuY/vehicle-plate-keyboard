@@ -79,7 +79,6 @@ const onlyAllowInput = (s: string, onlyAllows: secondPageType): boolean => {
 
 const LicenseKeyboard = React.memo((props: KeyboardProps) => {
   const [state, setState] = React.useState({
-    showKeyboard: false,
     keyboardOffsetProgress: 0,
   });
 
@@ -91,22 +90,6 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
       };
     },
     [props.visible],
-  );
-
-  React.useEffect(
-    () => {
-      if (state.showKeyboard) {
-        resetTime();
-        requestAnimationFrame(animationTick);
-      } else {
-        hideKeyboard();
-      }
-
-      return () => {
-        removeKeyboardDOM();
-      };
-    },
-    [state.showKeyboard],
   );
 
   const node = React.useRef<Element>(null);
@@ -140,10 +123,9 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
 
   const showKeyboard = () => {
     createKeyboardDOM();
-    setState(prevState => ({
-      ...prevState,
-      showKeyboard: true,
-    }));
+
+    resetTime();
+    requestAnimationFrame(animationTick);
   };
 
   const hideKeyboard = () => {
@@ -162,8 +144,6 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
 
     if (progress < 1) {
       requestAnimationFrame((time: number) => animationTick(time, direction));
-    } else if (!props.visible && direction === 'DOWN') {
-      setState(prevState => ({ ...prevState, showKeyboard: false }));
     }
   };
 
@@ -334,7 +314,7 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
     }
   };
 
-  if (state.showKeyboard && node.current) {
+  if (node.current) {
     return createPortal(
       <section
         style={{
