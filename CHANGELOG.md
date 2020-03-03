@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.1
+
+**Bug Fix**
+
+1. [连续开关键盘，键盘无法显示](https://github.com/LiuuY/vehicle-plate-keyboard/issues/8)
+
 ## 0.7.0
 
 **Enhancements**
