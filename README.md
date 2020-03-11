@@ -58,7 +58,6 @@ import 'vehicle-plate-keyboard/dist/main.css';
 | confirmButtonStyle | React.CSSProperties     | confirm button style          |
 | confirmButtonText  | string                  | confirm button text           |
 | cellTextStyle      | React.CSSProperties     | keycell style                 |
-| safeArea           | boolean                 | show safearea                 |
 
 ## 🚧 Development
 

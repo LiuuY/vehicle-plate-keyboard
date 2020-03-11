@@ -8,7 +8,6 @@ export interface KeyboardProps {
   cellTextStyle?: React.CSSProperties;
   value?: string;
   confirmButtonText?: string;
-  safeArea?: boolean;
 }
 
 export interface KeyboardState {

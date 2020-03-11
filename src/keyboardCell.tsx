@@ -1,11 +1,10 @@
 import * as React from 'react';
-import * as style from './style.module.scss';
 import { KeyboardCellProps, keyboardCellType } from './types';
 
-const TypeToStyle: { [key in keyboardCellType]: React.CSSProperties } = {
-  province: style.provinceCell,
-  character: style.characterCell,
-  normal: style.normalCell,
+const TypeToStyle: { [key in keyboardCellType]: string } = {
+  province: 'province-cell',
+  character: 'character-cell',
+  normal: 'normal-cell',
 };
 
 const KeyboardCell = React.memo((props: KeyboardCellProps) => {
@@ -17,12 +16,12 @@ const KeyboardCell = React.memo((props: KeyboardCellProps) => {
 
   return (
     <section
-      className={`${style.keyboardCell} ${TypeToStyle[props.type]} ${
-        props.disabled ? style.cellDisabled : ''
+      className={`${'keyboard-cell'} ${TypeToStyle[props.type]} ${
+        props.disabled ? 'cell-disabled' : ''
       }`}
       onClick={handleClick}
     >
-      <span style={props.cellTextStyle} className={style.cellText}>
+      <span style={props.cellTextStyle} className='cell-text'>
         {props.cell}
       </span>
     </section>

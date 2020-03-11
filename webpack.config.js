@@ -1,5 +1,4 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 
@@ -46,10 +45,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
   return loaders;
 };
 
-const cssRegex = /\.css$/;
-const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
-const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 module.exports = {
   entry: './src/keyboard.tsx',
@@ -90,23 +86,6 @@ module.exports = {
         test: /\.tsx?$/,
         loader: 'awesome-typescript-loader',
       },
-      {
-        test: cssRegex,
-        exclude: cssModuleRegex,
-        use: getStyleLoaders({
-          importLoaders: 1,
-        }),
-      },
-      // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
-      // using the extension .module.css
-      {
-        test: cssModuleRegex,
-        use: getStyleLoaders({
-          importLoaders: 1,
-          modules: true,
-          getLocalIdent: getCSSModuleLocalIdent,
-        }),
-      },
       // Opt-in support for SASS (using .scss or .sass extensions).
       // Chains the sass-loader with the css-loader and the style-loader
       // to immediately apply all styles to the DOM.
@@ -114,30 +93,12 @@ module.exports = {
       // extensions .module.scss or .module.sass
       {
         test: sassRegex,
-        exclude: sassModuleRegex,
         use: getStyleLoaders(
           {
             importLoaders: 2,
           },
           'sass-loader',
         ),
-      },
-      // Adds support for CSS Modules, but using SASS
-      // using the extension .module.scss or .module.sass
-      {
-        test: sassModuleRegex,
-        use: getStyleLoaders(
-          {
-            importLoaders: 2,
-            modules: true,
-            getLocalIdent: getCSSModuleLocalIdent,
-          },
-          'sass-loader',
-        ),
-      },
-      {
-        test: /\.svg$/,
-        loader: '@svgr/webpack',
       },
     ],
   },
