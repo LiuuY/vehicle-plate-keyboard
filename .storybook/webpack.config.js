@@ -1,6 +1,4 @@
-const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
-
-const sassModuleRegex = /\.module\.(scss|sass)$/;
+const sassRegex = /\.(scss|sass)$/;
 
 const getStyleLoaders = (cssOptions, preProcessor) => {
   const loaders = [
@@ -61,12 +59,10 @@ module.exports = ({ config }) => {
   config.resolve.extensions.push('.ts', '.tsx');
 
   config.module.rules.push({
-    test: sassModuleRegex,
+    test: sassRegex,
     use: getStyleLoaders(
       {
         importLoaders: 2,
-        modules: true,
-        getLocalIdent: getCSSModuleLocalIdent,
       },
       'sass-loader',
     ),

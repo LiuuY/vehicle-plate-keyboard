@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
 import KeyboardCell from './keyboardCell';
-import * as style from './style.module.scss';
+import './style.scss';
 import { KeyboardProps } from './types';
 
 enum SecondPageStatus {
@@ -105,9 +105,9 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
 
   const createKeyboardDOM = () => {
     node.current =
-      document.querySelector('#license-keyboard-box') ||
+      document.querySelector('#vehiclePlateKeyboard') ||
       document.createElement('div');
-    node.current.id = 'license-keyboard-box';
+    node.current.id = 'vehiclePlateKeyboard';
     document.body.appendChild(node.current);
     node.current.addEventListener('touchstart', handleTouchStart);
     node.current.addEventListener('touchmove', handleTouchMove);
@@ -169,10 +169,10 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
 
   const renderProvinceSelect = () => {
     return (
-      <article className={style.keyboardContainer}>
+      <article className='keyboard-container'>
         {firstPage.map((row, index: number) => {
           return (
-            <section className={style.keyboardRow} key={index}>
+            <section className='keyboard-row' key={index}>
               {row.map((province: string) => {
                 return (
                   <KeyboardCell
@@ -195,8 +195,8 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
     type: secondPageType = SecondPageStatus.AllowAll,
   ) => {
     return (
-      <article className={style.keyboardContainer}>
-        <section className={style.keyboardRow}>
+      <article className='keyboard-container'>
+        <section className='keyboard-row'>
           {secondPage[0].map((cell: string) => {
             return (
               <KeyboardCell
@@ -210,7 +210,7 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
             );
           })}
         </section>
-        <section className={style.keyboardRow}>
+        <section className='keyboard-row'>
           {secondPage[1].map((cell: string) => {
             return (
               <KeyboardCell
@@ -224,7 +224,7 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
             );
           })}
         </section>
-        <section className={style.keyboardRow}>
+        <section className='keyboard-row'>
           {secondPage[2].map((cell: string) => {
             return (
               <KeyboardCell
@@ -238,7 +238,7 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
             );
           })}
         </section>
-        <section className={style.keyboardRow}>
+        <section className='keyboard-row'>
           {secondPage[3].map((cell: string) => {
             return (
               <KeyboardCell
@@ -252,7 +252,7 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
             );
           })}
         </section>
-        <section className={style.keyboardRow}>
+        <section className='keyboard-row'>
           {secondPage[4]
             .map((cell: string) => {
               return (
@@ -275,11 +275,11 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
   const renderBackBtn = () => {
     return (
       <section
-        className={`${style.keyboardCell} ${style.backBtn}`}
+        className='keyboard-cell back-btn'
         onClick={handleDelete}
         key={'backBtn'}
       >
-        <span className={style.backBtnSvg}>&#9003;</span>
+        <span className='back-btn-svg'>&#9003;</span>
       </section>
     );
   };
@@ -321,14 +321,14 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
           transform: `translateY(calc(${1 -
             state.keyboardOffsetProgress} * 100%))`,
         }}
-        className={`${style.box} ${props.safeArea ? style.boxSafeArea : ''}`}
+        className='vehicle-plate-keyboard-container'
       >
-        <section className={style.confirm} onClick={handleDone}>
+        <section className='confirm' onClick={handleDone}>
           <p style={props.confirmButtonStyle}>
             {props.confirmButtonText || '确认'}
           </p>
         </section>
-        <section className={style.keyboard}>{renderKeyboard()}</section>
+        <section className='keyboard'>{renderKeyboard()}</section>
       </section>,
       node.current,
     );
