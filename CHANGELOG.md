@@ -4,7 +4,8 @@
 
 **Enhancements**
 
-- 移除 SASS/CSS Module，让用户可以自己定制
+- 移除 SASS/CSS Module，让用户可以自己定制。
+- 移除 SafeArea 相关配置。
 
 ## 0.7.1
 
