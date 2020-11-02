@@ -1,6 +1,6 @@
 const sassRegex = /\.(scss|sass)$/;
 
-const getStyleLoaders = (cssOptions, preProcessor) => {
+const getStyleLoaders = cssOptions => {
   const loaders = [
     require.resolve('style-loader'),
     {
@@ -36,10 +36,13 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
         ],
       },
     },
+    {
+      loader: 'sass-loader',
+      options: {
+        implementation: require('sass'),
+      },
+    },
   ];
-  if (preProcessor) {
-    loaders.push(require.resolve(preProcessor));
-  }
   return loaders;
 };
 
@@ -60,12 +63,9 @@ module.exports = ({ config }) => {
 
   config.module.rules.push({
     test: sassRegex,
-    use: getStyleLoaders(
-      {
-        importLoaders: 2,
-      },
-      'sass-loader',
-    ),
+    use: getStyleLoaders({
+      importLoaders: 2,
+    }),
   });
   config.resolve.extensions.push('.scss');
 

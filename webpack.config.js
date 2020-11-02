@@ -2,7 +2,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 
-const getStyleLoaders = (cssOptions, preProcessor) => {
+const getStyleLoaders = cssOptions => {
   const loaders = [
     devMode ? require.resolve('style-loader') : MiniCssExtractPlugin.loader,
     {
@@ -38,10 +38,13 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
         ],
       },
     },
+    {
+      loader: 'sass-loader',
+      options: {
+        implementation: require('sass'),
+      },
+    },
   ];
-  if (preProcessor) {
-    loaders.push(require.resolve(preProcessor));
-  }
   return loaders;
 };
 
@@ -93,12 +96,9 @@ module.exports = {
       // extensions .module.scss or .module.sass
       {
         test: sassRegex,
-        use: getStyleLoaders(
-          {
-            importLoaders: 2,
-          },
-          'sass-loader',
-        ),
+        use: getStyleLoaders({
+          importLoaders: 2,
+        }),
       },
     ],
   },
