@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { KeyboardCellProps, keyboardCellType } from './types';
+
+interface KeyboardCellProps {
+  cell: string;
+  cellTextStyle?: React.CSSProperties;
+  disabled?: boolean;
+  onClick?: (cell: string) => void;
+  type: keyboardCellType;
+}
+
+type keyboardCellType = 'province' | 'normal' | 'character';
 
 const TypeToStyle: { [key in keyboardCellType]: string } = {
   province: 'province-cell',

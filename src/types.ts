@@ -9,18 +9,3 @@ export interface KeyboardProps {
   value?: string;
   confirmButtonText?: string;
 }
-
-export interface KeyboardState {
-  showKeyboard: boolean;
-  keyboardOffsetProgress: number;
-}
-
-export interface KeyboardCellProps {
-  cell: string;
-  cellTextStyle?: React.CSSProperties;
-  disabled?: boolean;
-  onClick?: (cell: string) => void;
-  type: keyboardCellType;
-}
-
-export type keyboardCellType = 'province' | 'normal' | 'character';

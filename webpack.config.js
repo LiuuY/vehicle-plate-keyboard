@@ -87,7 +87,7 @@ module.exports = {
       // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
       {
         test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader',
+        loader: 'ts-loader',
       },
       // Opt-in support for SASS (using .scss or .sass extensions).
       // Chains the sass-loader with the css-loader and the style-loader
