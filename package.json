@@ -1,12 +1,12 @@
 {
   "name": "vehicle-plate-keyboard",
   "license": "MIT",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Chinese vehicle plate number keyboard for React",
   "author": "LiuuY <mail4c59@gmail.com>",
   "private": false,
-  "main": "dist/keyboard.js",
-  "types": "dist/types.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "start": "webpack",
     "build:watch": "webpack --watch --info-verbosity verbose",

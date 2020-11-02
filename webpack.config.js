@@ -51,10 +51,10 @@ const getStyleLoaders = cssOptions => {
 const sassRegex = /\.(scss|sass)$/;
 
 module.exports = {
-  entry: './src/keyboard.tsx',
+  entry: './src/index.tsx',
   mode: devMode ? 'development' : 'production',
   output: {
-    filename: 'keyboard.js',
+    filename: 'index.js',
     path: __dirname + '/dist',
     libraryTarget: 'umd',
   },
