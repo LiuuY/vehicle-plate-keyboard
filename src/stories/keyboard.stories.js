@@ -33,7 +33,6 @@ stories.addDecorator(withKnobs).add('License keyboard', () => {
 
           <LicenseKeyboard
             visible={this.state.showKeyboard}
-            safeArea={true}
             done={() => this.setState({ showKeyboard: false })}
             onChange={value => this.setState({ value })}
             value={this.state.value}
