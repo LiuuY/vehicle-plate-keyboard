@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.3
+
+**Bug Fix**
+
+1. [TypeScript 定义文件引用错误](https://github.com/LiuuY/vehicle-plate-keyboard/issues/15)
+
 ## 0.8.0
 
 **Enhancements**

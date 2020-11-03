@@ -11,7 +11,6 @@ tsconfig.json
 tslint.json
 webpack.config.js
 example
-demo.gif
 screenshots/
 .storybook/
 .travis.yml
