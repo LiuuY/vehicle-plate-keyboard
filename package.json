@@ -15,7 +15,6 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prestart": "rimraf dist && tsc",
-    "precommit": "lint-staged",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -74,5 +73,10 @@
       "yarn lint:fix",
       "git add"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
