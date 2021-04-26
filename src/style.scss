@@ -40,6 +40,7 @@
 
     .keyboard {
       height: 232px;
+      padding-bottom: 10px;
       background-color: #e8e9eb;
       display: flex;
       justify-content: center;
@@ -112,6 +113,9 @@
           }
         }
       }
+    }
+    .iphoneX {
+      padding-bottom: 34px;
     }
   }
 }

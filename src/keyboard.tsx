@@ -39,6 +39,15 @@ const document = window.document;
 
 const easeOut = (progress: number) => Math.pow(--progress, 5) + 1;
 
+const isIphonex = () => {
+    if (typeof window !== 'undefined' && window) {
+        return (
+            /iphone/gi.test(window.navigator.userAgent) && window.screen.height >= 812
+        );
+    }
+    return false;
+};
+
 /*
 新能源车牌号规则：
 1. 当第三位为D/F，第四位为字母数字，第五至八位为数字（小型车）
@@ -305,7 +314,9 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
                         {props.confirmButtonText || '确认'}
                     </p>
                 </section>
-                <section className="keyboard">{renderKeyboard()}</section>
+                <section className={isIphonex ? 'keyboard iphoneX' : 'keyboard'}>
+                    {renderKeyboard()}
+                </section>
             </section>,
             node.current,
         );
