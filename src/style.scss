@@ -1,6 +1,7 @@
 #vehiclePlateKeyboard {
   .vehicle-plate-keyboard-container {
     position: fixed;
+    z-index: 9999;
     min-height: 276px;
     background-color: #e8e9eb;
     bottom: 0;
