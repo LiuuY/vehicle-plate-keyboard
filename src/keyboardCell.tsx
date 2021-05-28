@@ -30,7 +30,7 @@ const KeyboardCell = React.memo((props: KeyboardCellProps) => {
       }`}
       onClick={handleClick}
     >
-      <span style={props.cellTextStyle} className='cell-text'>
+      <span style={props.cellTextStyle} className="cell-text">
         {props.cell}
       </span>
     </section>

@@ -73,18 +73,6 @@ module.exports = {
       },
     ],
     '@typescript-eslint/explicit-module-boundary-types': 'warn',
-    '@typescript-eslint/indent': [
-      'error',
-      4,
-      {
-        FunctionDeclaration: {
-          parameters: 'first',
-        },
-        FunctionExpression: {
-          parameters: 'first',
-        },
-      },
-    ],
     '@typescript-eslint/member-delimiter-style': [
       'off',
       {
