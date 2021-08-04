@@ -9,7 +9,7 @@ React 实现的车牌键盘。
 ## 💡 Features
 
 - 省份 + 字母（无 I/O）/ 数字 + 「港澳学警领」
-- [新能源车牌规则](https://github.com/LiuuY/vehicle-plate-keyboard/blob/master/CHANGELOG.md#070)
+- [新能源车牌规则](https://zh.wikipedia.org/wiki/中华人民共和国民用机动车号牌#新能源汽车号牌)
 
 ## 🚗 Demo
 

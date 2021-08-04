@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.4
+
+**Enhancements**
+
+- 新能源车牌号规则：
+
+  https://zh.wikipedia.org/wiki/中华人民共和国民用机动车号牌#新能源汽车号牌
+
 ## 0.8.3
 
 **Bug Fix**
