@@ -30,7 +30,8 @@ const secondPage = [
 ];
 
 const smallVehicleNewEnergy = '0123456789';
-const bigVehicleNewEnergy = 'DF';
+const newEnergyLetter = 'ABCDEFGHJK';
+const newEnergyLetterReg = new RegExp(`[${newEnergyLetter}]`);
 
 const requestAnimationFrame =
   window.requestAnimationFrame || window.webkitRequestAnimationFrame;
@@ -39,14 +40,13 @@ const document = window.document;
 
 const easeOut = (progress: number) => Math.pow(--progress, 5) + 1;
 
-/*
-新能源车牌号规则：
-1. 当第三位为D/F，第四位为字母数字，第五至八位为数字（小型车）
-2. 当第八位为D/F, 第三到七位为数字（大型车）
-*/
+/**
+  新能源车牌号规则：
+  https://zh.wikipedia.org/wiki/中华人民共和国民用机动车号牌#新能源汽车号牌
+ */
 const isNewEnergyPlate = (plate: string): false | string => {
   if (isNewEnergyBigVehicle(plate)) {
-    return bigVehicleNewEnergy;
+    return newEnergyLetter;
   } else if (isNewEnergySmallVehicle(plate)) {
     return smallVehicleNewEnergy;
   }
@@ -54,7 +54,7 @@ const isNewEnergyPlate = (plate: string): false | string => {
 };
 
 const isNewEnergySmallVehicle = (plate: string) =>
-  /[D|F]/.test(plate[2]) && /^[0-9]+$/.test(plate.slice(4, 7));
+  newEnergyLetterReg.test(plate[2]) && /^[0-9]+$/.test(plate.slice(4, 7));
 
 const isNewEnergyBigVehicle = (plate: string) =>
   /^[0-9]+$/.test(plate.slice(2, 7));
