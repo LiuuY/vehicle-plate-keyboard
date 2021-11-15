@@ -13,7 +13,7 @@ React 实现的车牌键盘。
 
 ## 🚗 Demo
 
-[![Edit vehicle-plate-keyboard-demo](https://codesandbox.io/s/vehicle-plate-keyboard-demo-xxdlv?fontsize=14&hidenavigation=1&theme=dark&resolutionWidth=320&resolutionHeight=675)
+[![Edit vehicle-plate-keyboard-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vehicle-plate-keyboard-demo-xxdlv?fontsize=14&hidenavigation=1&theme=dark&resolutionWidth=320&resolutionHeight=675)
 
 ![Demo](https://raw.githubusercontent.com/LiuuY/vehicle-plate-keyboard/master/screenshots/demo.gif)
 
