@@ -1,4 +1,4 @@
 import LicenseKeyboard from './keyboard';
 
-export { KeyboardProps } from './types';
+export type { KeyboardProps } from './types';
 export default LicenseKeyboard;

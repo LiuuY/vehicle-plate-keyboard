@@ -33,8 +33,7 @@ const smallVehicleNewEnergy = '0123456789';
 const newEnergyLetter = 'ABCDEFGHJK';
 const newEnergyLetterReg = new RegExp(`[${newEnergyLetter}]`);
 
-const requestAnimationFrame =
-  window.requestAnimationFrame || window.webkitRequestAnimationFrame;
+const requestAnimationFrame = window.requestAnimationFrame;
 
 const document = window.document;
 
@@ -75,6 +74,7 @@ const onlyAllowInput = (s: string, onlyAllows: secondPageType): boolean => {
   } else if (onlyAllows === SecondPageStatus.AllowSpecialCharaters) {
     return isAlphabet(s) || isNumber(s) || isSpecialCharacters(s);
   }
+  return true;
 };
 
 const LicenseKeyboard = React.memo((props: KeyboardProps) => {
@@ -89,7 +89,7 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
     };
   }, [props.visible]);
 
-  const node = React.useRef<Element>(null);
+  const node = React.useRef<Element | null>(null);
 
   let elapsed = 0;
   let startTime = 0;
@@ -127,14 +127,14 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
 
   const hideKeyboard = () => {
     resetTime();
-    requestAnimationFrame(time => animationTick(time, 'DOWN'));
+    requestAnimationFrame((time) => animationTick(time, 'DOWN'));
   };
 
   const animationTick = (now: number, direction: 'UP' | 'DOWN' = 'UP') => {
     elapsed = now - startTime;
     const progress = Math.min(easeOut(elapsed / totalTime), 1);
 
-    setState(prevState => ({
+    setState((prevState) => ({
       ...prevState,
       keyboardOffsetProgress: direction === 'UP' ? progress : 1 - progress,
     }));
@@ -295,8 +295,9 @@ const LicenseKeyboard = React.memo((props: KeyboardProps) => {
     return createPortal(
       <section
         style={{
-          transform: `translateY(calc(${1 -
-            state.keyboardOffsetProgress} * 100%))`,
+          transform: `translateY(calc(${
+            1 - state.keyboardOffsetProgress
+          } * 100%))`,
         }}
         className="vehicle-plate-keyboard-container"
       >

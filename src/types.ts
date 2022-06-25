@@ -6,6 +6,6 @@ export interface KeyboardProps {
   onChange?: (text: string) => void;
   confirmButtonStyle?: React.CSSProperties;
   cellTextStyle?: React.CSSProperties;
-  value?: string;
+  value: string;
   confirmButtonText?: string;
 }
