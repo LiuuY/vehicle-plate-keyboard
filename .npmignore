@@ -8,10 +8,12 @@ node_modules/
 index.html
 postcss.config.js
 tsconfig.json
-tslint.json
-webpack.config.js
+tsconfig.node.json
+vite.config.js
 example
 screenshots/
 .storybook/
 .travis.yml
 CHANGELOG.md
+.eslintrc.js
+.eslintignore
