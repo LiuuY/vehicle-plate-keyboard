@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.0
+
+Migrate to Vite :)
+
 ## 0.8.4
 
 **Enhancements**
