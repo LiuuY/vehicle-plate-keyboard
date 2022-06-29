@@ -1,7 +1,7 @@
 {
   "name": "vehicle-plate-keyboard",
   "license": "MIT",
-  "version": "0.9.0",
+  "version": "0.9.0-beta.0",
   "description": "Chinese vehicle plate number keyboard for React",
   "author": "LiuuY <mail4c59@gmail.com>",
   "private": false,
