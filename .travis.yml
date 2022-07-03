@@ -5,15 +5,22 @@ node_js:
 cache:
   directories:
     - node_modules
-script:
-  - yarn test:ci
-  - yarn build
 on:
   branch: master
 
+script:
+  - node --version
+  - yarn build
+  - xvfb-run --auto-servernum yarn test
+
+os:
+  - linux
+
 addons:
+  chrome: stable
   apt:
     packages:
+      - libnss3
       # These are required to run webkit
       - libwoff1
       - libopus0
@@ -40,7 +47,15 @@ addons:
       # this is needed for running headful tests
       - xvfb
 
-# allow headful tests
 before_install:
+  # Info about OS
+  - uname
+  #- if [[ `node -v` = v14* ]]; then npm i -g npx; fi
+  - npx --version
   # Enable user namespace cloning
-  - 'sysctl kernel.unprivileged_userns_clone=1'
+  - if [[ `uname` = "Linux" ]]; then sysctl kernel.unprivileged_userns_clone=1; fi
+  # Launch XVFB
+  - if [[ `uname` = "Linux" ]]; then export DISPLAY=:99.0; fi
+
+before_script:
+  - npm install --no-save playwright@1.18.1
