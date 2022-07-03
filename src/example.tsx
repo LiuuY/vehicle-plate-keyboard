@@ -1,17 +1,16 @@
 import { useState } from 'react';
-import LicenseKeyboard from 'vehicle-plate-keyboard';
-import '../../dist/style.css';
-import './App.css';
+import { createRoot } from 'react-dom/client';
+
+import LicenseKeyboard from './index';
+import './style.scss';
 
 function App() {
   const [showKeyboard, setShowKeyboard] = useState(false);
   const [value, setValue] = useState('');
 
   return (
-    <div className="App">
-      <button onClick={() => setShowKeyboard(!showKeyboard)}>{`${
-        showKeyboard ? '关闭' : '打开'
-      }键盘⌨️`}</button>
+    <div>
+      <button onClick={() => setShowKeyboard(!showKeyboard)}>{'键盘⌨️'}</button>
 
       <p>{value}</p>
 
@@ -25,4 +24,6 @@ function App() {
   );
 }
 
-export default App;
+const container = document.getElementById('root');
+const root = createRoot(container!);
+root.render(<App />);
