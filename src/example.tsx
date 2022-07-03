@@ -10,9 +10,12 @@ function App() {
 
   return (
     <div>
-      <button onClick={() => setShowKeyboard(!showKeyboard)}>{'键盘⌨️'}</button>
+      <button
+        data-test-id="controlButton"
+        onClick={() => setShowKeyboard(!showKeyboard)}
+      >{`${showKeyboard ? 'close' : 'open'} the keyboard`}</button>
 
-      <p>{value}</p>
+      <p data-test-id="value">{value}</p>
 
       <LicenseKeyboard
         visible={showKeyboard}
