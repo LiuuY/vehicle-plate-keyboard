@@ -28,6 +28,8 @@ const KeyboardCell = React.memo((props: KeyboardCellProps) => {
       className={`${'keyboard-cell'} ${TypeToStyle[props.type]} ${
         props.disabled ? 'cell-disabled' : ''
       }`}
+      aria-disabled={props.disabled}
+      aria-label={props.cell}
       onClick={handleClick}
     >
       <span style={props.cellTextStyle} className="cell-text">
