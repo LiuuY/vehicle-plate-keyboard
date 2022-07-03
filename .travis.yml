@@ -11,7 +11,7 @@ on:
 script:
   - node --version
   - yarn build
-  - xvfb-run --auto-servernum yarn test
+  - xvfb-run --auto-servernum yarn test:ci
 
 os:
   - linux
@@ -58,4 +58,4 @@ before_install:
   - if [[ `uname` = "Linux" ]]; then export DISPLAY=:99.0; fi
 
 before_script:
-  - npm install --no-save playwright@1.18.1
+  - npm install --no-save playwright@1.23.1
