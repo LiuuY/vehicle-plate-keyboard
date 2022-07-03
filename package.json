@@ -21,6 +21,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "npx playwright test --headed",
+    "test:ci": "npx playwright test",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
