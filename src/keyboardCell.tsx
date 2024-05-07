@@ -17,7 +17,11 @@ const TypeToStyle: { [key in keyboardCellType]: string } = {
 };
 
 const KeyboardCell = React.memo((props: KeyboardCellProps) => {
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent | React.TouchEvent) => {
+    if (e.type === 'touchend') {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     if (!props.disabled && typeof props.onClick === 'function') {
       props.onClick(props.cell);
     }
@@ -31,6 +35,7 @@ const KeyboardCell = React.memo((props: KeyboardCellProps) => {
       aria-disabled={props.disabled}
       aria-label={props.cell}
       role="button"
+      onTouchEnd={handleClick}
       onClick={handleClick}
     >
       <span style={props.cellTextStyle} className="cell-text">
